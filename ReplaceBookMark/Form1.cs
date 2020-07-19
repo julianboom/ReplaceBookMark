@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DriverHelper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,12 @@ namespace ReplaceBookMark
 {
     public partial class Form1 : Form
     {
+        public MySqlHelper mySqlHelper;
         public Form1()
         {
             InitializeComponent();
+            mySqlHelper = new MySqlHelper();
+            InitialMapSelection();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -43,6 +47,21 @@ namespace ReplaceBookMark
         private void button3_Click(object sender, EventArgs e)
         {
 
+        }
+        /// <summary>
+        /// 初始化映射关系选择下拉框
+        /// </summary>
+        public void InitialMapSelection()
+        {
+            try
+            {
+                DataTable dt = mySqlHelper.ExecuteDataTable("Select * from dict", null);
+            }
+            catch (Exception e)
+            {
+
+                this.textBox2.AppendText("连接映射关系数据源失败，请检查数据库：" + e.ToString() + "\r\n");
+            }
         }
     }
 }

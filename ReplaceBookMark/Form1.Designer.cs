@@ -35,7 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.MapSelection = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -104,13 +104,13 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "请选择映射关系";
             // 
-            // comboBox1
+            // MapSelection
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(208, 102);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(336, 26);
-            this.comboBox1.TabIndex = 5;
+            this.MapSelection.FormattingEnabled = true;
+            this.MapSelection.Location = new System.Drawing.Point(208, 102);
+            this.MapSelection.Name = "MapSelection";
+            this.MapSelection.Size = new System.Drawing.Size(336, 26);
+            this.MapSelection.TabIndex = 5;
             // 
             // button3
             // 
@@ -128,7 +128,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(721, 703);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.MapSelection);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button1);
@@ -152,7 +152,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox MapSelection;
         private System.Windows.Forms.Button button3;
     }
 }
