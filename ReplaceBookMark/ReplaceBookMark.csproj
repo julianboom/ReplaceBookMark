@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DriveHelper\AsposeHelper.cs" />
+    <Compile Include="DriveHelper\CommonHelper.cs" />
     <Compile Include="DriveHelper\MySqlHelper.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

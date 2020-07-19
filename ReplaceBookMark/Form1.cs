@@ -48,15 +48,21 @@ namespace ReplaceBookMark
         {
             if (string.IsNullOrWhiteSpace(this.textBox1.Text))
             {
+                this.textBox2.Clear();
                 this.textBox2.AppendText("请先选择文书模板所在的文件夹位置\r\n");
                 return;
             }
             if (string.IsNullOrWhiteSpace(this.MapSelection.SelectedValue.ToString()))
             {
+                this.textBox2.Clear();
                 this.textBox2.AppendText("请先选择映射关系\r\n");
                 return;
             }
+            this.textBox2.Clear();
             this.textBox2.AppendText("正在进行批量替换............\r\n");
+            CommonHelper commonHelper = new CommonHelper();
+            commonHelper.startReplace(this.MapSelection.SelectedValue.ToString(), this.textBox1.Text);
+            this.textBox2.AppendText("恭喜你，替换完成！\r\n");
         }
         /// <summary>
         /// 初始化映射关系选择下拉框

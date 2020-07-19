@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DriveHelper
+namespace DriverHelper
 {
     class AsposeHelper
     {
@@ -62,7 +62,10 @@ namespace DriveHelper
             Bookmark bookmark = oDoc.Range.Bookmarks[oldBookMarkName];
 
             // Set the name of the bookmark.
-            bookmark.Name = newBookmarkName;
+            if(bookmark != null)
+            {
+                bookmark.Name = newBookmarkName;
+            }
         }
     }
 }
