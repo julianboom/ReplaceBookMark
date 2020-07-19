@@ -32,7 +32,7 @@ namespace ReplaceBookMark
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 string foldPath = dialog.SelectedPath;
-                this.textBox2.AppendText("你所选择的材料文件夹目录是：" + foldPath + "\r\n");
+                this.textBox2.AppendText("你所选择的文书模板目录是：" + foldPath + "\r\n");
                 //MessageBox.Show("已选择文件夹:" + foldPath, "选择文件夹提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return foldPath;
             }
@@ -46,7 +46,17 @@ namespace ReplaceBookMark
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            if (string.IsNullOrWhiteSpace(this.textBox1.Text))
+            {
+                this.textBox2.AppendText("请先选择文书模板所在的文件夹位置\r\n");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(this.MapSelection.SelectedValue.ToString()))
+            {
+                this.textBox2.AppendText("请先选择映射关系\r\n");
+                return;
+            }
+            this.textBox2.AppendText("正在进行批量替换............\r\n");
         }
         /// <summary>
         /// 初始化映射关系选择下拉框
@@ -55,12 +65,40 @@ namespace ReplaceBookMark
         {
             try
             {
-                DataTable dt = mySqlHelper.ExecuteDataTable("Select * from dict", null);
+                DataTable dt = mySqlHelper.ExecuteDataTable("SELECT `GroupID`,`GroupName` FROM bookmarkmap GROUP BY GroupName Order By CreateTime Desc", null);
+                DataRow defaultRow = dt.NewRow();
+                defaultRow["GroupID"] = "";
+                defaultRow["GroupName"] = "请选择";
+                dt.Rows.InsertAt(defaultRow, 0);
+                //this.MapSelection.Items.AddRange
+                this.MapSelection.DataSource = dt;
+                this.MapSelection.ValueMember = "GroupID";
+                this.MapSelection.DisplayMember = "GroupName";
+
             }
             catch (Exception e)
             {
 
                 this.textBox2.AppendText("连接映射关系数据源失败，请检查数据库：" + e.ToString() + "\r\n");
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            InitialMapSelection();
+        }
+
+        private void MapSelection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string groupID = this.MapSelection.SelectedValue.ToString();
+            string groupName = this.MapSelection.Text;
+            if (string.IsNullOrWhiteSpace(groupID))
+            {
+                this.textBox2.AppendText("您未选择分组，请选择分组\r\n");
+            }
+            else if (groupID != "System.Data.DataRowView")
+            {
+                this.textBox2.AppendText($"您选择的分组ID为  {groupID}，分组名为  {groupName}\r\n");
             }
         }
     }

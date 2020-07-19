@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.MapSelection = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -58,9 +59,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(572, 51);
+            this.button1.Location = new System.Drawing.Point(572, 40);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 27);
+            this.button1.Size = new System.Drawing.Size(127, 45);
             this.button1.TabIndex = 2;
             this.button1.Text = "选择";
             this.button1.UseVisualStyleBackColor = true;
@@ -111,6 +112,7 @@
             this.MapSelection.Name = "MapSelection";
             this.MapSelection.Size = new System.Drawing.Size(336, 26);
             this.MapSelection.TabIndex = 5;
+            this.MapSelection.SelectedIndexChanged += new System.EventHandler(this.MapSelection_SelectedIndexChanged);
             // 
             // button3
             // 
@@ -122,11 +124,22 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(572, 98);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(127, 45);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "刷新";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(721, 703);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.MapSelection);
             this.Controls.Add(this.button2);
@@ -154,6 +167,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox MapSelection;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
 
