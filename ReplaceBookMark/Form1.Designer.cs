@@ -114,21 +114,21 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(492, 631);
+            this.button3.Location = new System.Drawing.Point(28, 606);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(149, 38);
-            this.button3.TabIndex = 4;
+            this.button3.Size = new System.Drawing.Size(141, 52);
+            this.button3.TabIndex = 6;
             this.button3.Text = "开始替换";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button2_Click);
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(721, 703);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button3);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button1);
