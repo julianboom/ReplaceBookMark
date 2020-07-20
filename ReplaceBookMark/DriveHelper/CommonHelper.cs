@@ -83,6 +83,10 @@ namespace DriverHelper
 
             foreach (FileInfo fileInfo in fileInfos)
             {
+                if (!fileInfo.Extension.ToLower().Contains("doc")||fileInfo.Name.Contains("~$"))
+                {
+                    continue;
+                }
                 asposeHelper.OpenDocument(fileInfo.FullName);
                 foreach(DataRow dr in mapDt.Rows)
                 {
