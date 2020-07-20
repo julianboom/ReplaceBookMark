@@ -87,6 +87,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="说明文档及表结构\使用批量替换书签.doc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -94,6 +95,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Resource\Aspose.Words.dll" />
+    <Content Include="说明文档及表结构\bookmarkmap.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
