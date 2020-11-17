@@ -71,7 +71,7 @@ namespace ReplaceBookMark
         {
             try
             {
-                DataTable dt = mySqlHelper.ExecuteDataTable("SELECT `GroupID`,`GroupName` FROM bookmarkmap GROUP BY GroupName Order By CreateTime Desc", null);
+                DataTable dt = mySqlHelper.ExecuteDataTable("SELECT `GroupID`,`GroupName` FROM bookmarkmap GROUP BY GroupID Order By CreateTime Desc", null);
                 DataRow defaultRow = dt.NewRow();
                 defaultRow["GroupID"] = "";
                 defaultRow["GroupName"] = "请选择";
