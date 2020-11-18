@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReplaceBookMark.DriveHelper;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -83,16 +84,25 @@ namespace DriverHelper
 
             foreach (FileInfo fileInfo in fileInfos)
             {
-                if (!fileInfo.Extension.ToLower().Contains("doc")||fileInfo.Name.Contains("~$"))
+                try
                 {
-                    continue;
+                    if (!fileInfo.Extension.ToLower().Contains("doc") || fileInfo.Name.Contains("~$"))
+                    {
+                        continue;
+                    }
+                    asposeHelper.OpenDocument(fileInfo.FullName);
+
+                    foreach (DataRow dr in mapDt.Rows)
+                    {
+                        asposeHelper.RepalceBookMark(dr["OldBookMarkName"].ToString(), dr["NewBookMarkName"].ToString());
+                    }
+
+                    asposeHelper.SaveDocument(fileInfo.FullName.Replace(oldDirName, newDirName));
                 }
-                asposeHelper.OpenDocument(fileInfo.FullName);
-                foreach(DataRow dr in mapDt.Rows)
+                catch (Exception e)
                 {
-                    asposeHelper.RepalceBookMark(dr["OldBookMarkName"].ToString(), dr["NewBookMarkName"].ToString());
+                    LogHelper.DoErrorLog($"报错信息：{e.ToString()}\r\n 文件信息：{fileInfo.FullName}");
                 }
-                asposeHelper.SaveDocument(fileInfo.FullName.Replace(oldDirName, newDirName));
             }
         }
 
