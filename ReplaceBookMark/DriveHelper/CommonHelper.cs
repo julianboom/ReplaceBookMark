@@ -72,7 +72,7 @@ namespace DriverHelper
 
 
         #region 开始替换书签
-        public void startReplace(string groupID,string DirPath)
+        public int startReplace(string groupID,string DirPath)
         {
             string oldDirName = new DirectoryInfo(DirPath).Name;
             string newDirName = "ReplaceResult";
@@ -82,6 +82,7 @@ namespace DriverHelper
             List<FileInfo> fileInfos = GetFileInfos(DirPath);
             AsposeHelper asposeHelper = new AsposeHelper();
 
+            int errorCounter = 0;
             foreach (FileInfo fileInfo in fileInfos)
             {
                 try
@@ -102,8 +103,10 @@ namespace DriverHelper
                 catch (Exception e)
                 {
                     LogHelper.DoErrorLog($"报错信息：{e.ToString()}\r\n 文件信息：{fileInfo.FullName}");
+                    errorCounter ++;//记录报错次数
                 }
             }
+            return errorCounter;
         }
 
         #endregion

@@ -61,8 +61,15 @@ namespace ReplaceBookMark
             this.textBox2.Clear();
             this.textBox2.AppendText("正在进行批量替换............\r\n");
             CommonHelper commonHelper = new CommonHelper();
-            commonHelper.startReplace(this.MapSelection.SelectedValue.ToString(), this.textBox1.Text);
-            this.textBox2.AppendText("恭喜你，替换完成！\r\n");
+            int errorCounter = commonHelper.startReplace(this.MapSelection.SelectedValue.ToString(), this.textBox1.Text);
+            if (errorCounter == 0)
+            {
+                this.textBox2.AppendText("恭喜你，完美替换完成！\r\n");
+            }
+            else
+            {
+                this.textBox2.AppendText($"有{errorCounter}个文件替换失败，具体请查看日志！\r\n");
+            }
         }
         /// <summary>
         /// 初始化映射关系选择下拉框
